@@ -5,6 +5,7 @@ version := "0.1"
 scalaVersion := "2.11.6"
 
 libraryDependencies  ++= Seq(
+  "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test",
   "org.scalanlp" %% "breeze" % "0.11.2",
   // native libraries are not included by default. add this if you want them (as of 0.7)
   // native libraries greatly improve performance, but increase jar sizes.
