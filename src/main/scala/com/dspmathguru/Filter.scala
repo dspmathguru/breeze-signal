@@ -29,6 +29,7 @@ class Filter(_b: DenseVector[Double], _a:DenseVector[Double]) {
     else DenseVector.ones[Double](1)
 
   def filter(in: DenseVector[Double]): DenseVector[Double] = {
+    println("filter:")
     val rtn = DenseVector.zeros[Double](in.length)
     var i = 0
 
@@ -42,6 +43,8 @@ class Filter(_b: DenseVector[Double], _a:DenseVector[Double]) {
       ys(0) = yN
 
       rtn(i) = yN
+      println(s"i = $i, xN = $xN, yN = $yN")
+
       i += 1
     }
 
