@@ -1,4 +1,4 @@
-package com.dspmathguru
+package com.dspmathguru.signal
 
 case class Precision(val p:Double)
 

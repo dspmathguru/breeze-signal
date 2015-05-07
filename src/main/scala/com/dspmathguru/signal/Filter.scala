@@ -9,7 +9,7 @@
  * 
  */
 
-package com.dspmathguru
+package com.dspmathguru.signal
 
 import breeze.linalg._
 import breeze.numerics._
@@ -19,6 +19,8 @@ import breeze.plot._
 class Filter(_b: DenseVector[Double], _a:DenseVector[Double]) {
   private val a = _a
   private val b = _b
+  
+  println(s"${b.toString()}")
 
   private val ys = DenseVector.zeros[Double](_a.length)
   private val xs = DenseVector.zeros[Double](_b.length)
@@ -34,12 +36,10 @@ class Filter(_b: DenseVector[Double], _a:DenseVector[Double]) {
     var i = 0
 
     for (xN <- in) {
-      xs(1 to -1) := xs(0 to -2)
+      xs(1 to -1) := xs(0 to -2).toDenseVector
       xs(0) = xN
-
       val yN = (bDIVa0 dot xs) - { if (ys.length > 1) aDIVa0 dot ys(1 to -1) else 0 } 
-
-      ys(1 to -1) := ys(0 to -2)
+      if (ys.length > 1) ys(1 to -1) := ys(0 to -2).toDenseVector
       ys(0) = yN
 
       rtn(i) = yN
